@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@unocss/preset-rem-to-px": "^0.45.1",
+    "normalize.css": "^8.0.1",
     "pinia": "^2.0.17",
     "unocss": "^0.45.1",
     "vite-plugin-pages": "^0.25.0",

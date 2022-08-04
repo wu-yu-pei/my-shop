@@ -7,6 +7,10 @@ import store from './store';
 // unocss
 import 'uno.css';
 
+// normalize.css
+import 'normalize.css'
+
+
 // router and layouts
 import generatedRoutes from '~pages';
 import { createRouter, createWebHistory } from 'vue-router';
