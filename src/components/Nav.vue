@@ -1,15 +1,8 @@
 <template>
   <div shadow>
     <div class="nav" relative md:w80vw sm:w100vw ma flex justify-between p10 h70 box-border>
-      <div flex items-center w200 lh-48 shrink-0 overflow-hidden>
-        <img
-          w100
-          h28
-          sm:w200
-          sm:h48
-          src="../assets/imgs/logo.png"
-          alt=""
-        />
+      <div flex items-center w200 lh-48 shrink-0 overflow-hidden cursor-pointer>
+        <img w100 h28 sm:w200 sm:h48 src="../assets/imgs/logo.png" alt="" />
       </div>
       <div w150 flex justify-between items-center>
         <div i-icon-park-outline-vip m5 cursor-pointer :class="{ red: isVip }"></div>
@@ -27,17 +20,7 @@
           @click.stop="searchIconClick"
         ></div>
         <div w50>
-          <img
-            w40
-            h40
-            rd-40
-            cursor-pointer
-            mx-auto
-            my-0
-            block
-            src="../assets/imgs/user.png"
-            alt=""
-          />
+          <img w40 h40 rd-40 cursor-pointer mx-auto my-0 block src="../assets/imgs/user.png" alt="" />
         </div>
       </div>
       <div
@@ -46,6 +29,7 @@
         md:w80vw
         w100vw
         ma
+        px15
         top--70
         left-0
         h70
@@ -57,7 +41,8 @@
         ref="searchPanel"
       >
         <input
-          grow-9
+          grow-4
+          md:grow-9
           border-none
           outline-none
           color-blue
@@ -68,7 +53,8 @@
         />
         <div
           outline-none
-          grow
+          grow-1
+          md:grow-2
           lh-70
           flex
           justify-center

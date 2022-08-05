@@ -1,28 +1,54 @@
 <template>
   <div class="category" md:w80vw sm:w100vw ma>
     <div p10 m10 rd-5 flex>
-      <span> <h4>大纲</h4></span>
-      <ul flex gap15 items-center>
-        <li class="active">全部</li>
-        <li>前端</li>
-        <li>后端</li>
-        <li>架构师</li>
+      <span shrink-0> <h4>大纲</h4></span>
+      <ul flex gap15 items-center flex-wrap>
+        <li
+          v-for="(val, key) in category"
+          @click="handleDaGangClick(key)"
+          :class="{ active: key === activeDaGang }"
+        >
+          {{ key }}
+        </li>
       </ul>
     </div>
     <div p10 m10 rd-5 flex>
-      <span><h4>分类</h4></span>
-      <ul flex gap15 items-center>
-        <li class="active">全部</li>
-        <li>css</li>
-        <li>javascript</li>
-        <li>vue</li>
-        <li>react</li>
+      <span shrink-0><h4>分类</h4></span>
+      <ul flex gap15 items-center flex-wrap>
+        <li
+          v-for="(item, index) in category[activeDaGang]"
+          :class="{ active: activeFenLei === index }"
+          @click="handleFenLeiClick(index)"
+        >
+          {{ item }}
+        </li>
       </ul>
     </div>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { reactive, ref } from 'vue';
+
+const activeDaGang = ref('全部');
+const activeFenLei = ref(0);
+
+const category = reactive({
+  全部: ['全部'],
+  前端: ['html', 'css', 'vue', 'react'],
+  后端: ['java', 'Mysql'],
+  架构师: [],
+});
+
+const handleDaGangClick = (key) => {
+  activeDaGang.value = key;
+  activeFenLei.value = 0;
+};
+
+const handleFenLeiClick = (index) => {
+  activeFenLei.value = index;
+};
+</script>
 
 <style scoped>
 ul li {
