@@ -1,11 +1,13 @@
 <template>
   <div shadow>
     <div class="nav" relative md:w80vw sm:w100vw ma flex justify-between p10 h70 box-border>
-      <div w200 lh-48 shrink-0 overflow-hidden>
+      <div flex items-center w200 lh-48 shrink-0 overflow-hidden>
         <img
-          w200
-          h48
-          src="https://youkewang.top/wp-content/uploads/2021/08/19131418534.png"
+          w100
+          h28
+          sm:w200
+          sm:h48
+          src="../assets/imgs/logo.png"
           alt=""
         />
       </div>
