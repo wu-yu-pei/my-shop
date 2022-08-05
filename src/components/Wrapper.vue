@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper" w100vw h200 md:h370 relative></div>
+  <div class="wrapper" h200 md:h370 relative></div>
 </template>
 
 <script setup></script>

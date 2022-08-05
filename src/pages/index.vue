@@ -3,6 +3,7 @@
     <Nav></Nav>
     <Wrapper></Wrapper>
     <Category></Category>
+    <Content></Content>
   </div>
 </template>
 
@@ -17,6 +18,7 @@ import { useRouter, useRoute } from 'vue-router';
 import Nav from '../components/Nav.vue';
 import Wrapper from '../components/Wrapper.vue';
 import Category from '../components/Category.vue';
+import Content from '../components/Content.vue';
 </script>
 
 <style scoped></style>

@@ -1,6 +1,6 @@
 <template>
   <div shadow>
-    <div class="nav" relative md:w80vw sm:w100vw ma flex justify-between p10 h70 box-border>
+    <div class="nav" relative md:w80vw ma flex justify-between p10 h70 box-border>
       <div flex items-center w200 lh-48 shrink-0 overflow-hidden cursor-pointer>
         <img w100 h28 sm:w200 sm:h48 src="../assets/imgs/logo.png" alt="" />
       </div>
@@ -27,7 +27,6 @@
         flex
         absolute
         md:w80vw
-        w100vw
         ma
         px15
         top--70
@@ -115,6 +114,7 @@ onUnmounted(() => {
 
 <style scoped>
 .show {
+  width: 100%;
   top: 0;
 }
 

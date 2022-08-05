@@ -1,6 +1,6 @@
 <template>
-  <div class="category" md:w80vw sm:w100vw ma>
-    <div p10 m10 rd-5 flex>
+  <div class="category" md:w80vw ma>
+    <div p10 my10 rd-5 flex>
       <span shrink-0> <h4>大纲</h4></span>
       <ul flex gap15 items-center flex-wrap>
         <li
@@ -12,7 +12,7 @@
         </li>
       </ul>
     </div>
-    <div p10 m10 rd-5 flex>
+    <div p10 my10 rd-5 flex>
       <span shrink-0><h4>分类</h4></span>
       <ul flex gap15 items-center flex-wrap>
         <li
@@ -69,5 +69,11 @@ ul li.active {
 }
 .category > div {
   border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 640px) {
+  .sm\:w100vw {
+    width: 100%;
+  }
 }
 </style>
