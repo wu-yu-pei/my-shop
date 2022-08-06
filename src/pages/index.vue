@@ -19,6 +19,10 @@ import Nav from '../components/Nav.vue';
 import Wrapper from '../components/Wrapper.vue';
 import Category from '../components/Category.vue';
 import Content from '../components/Content.vue';
+
+import { getData } from '../service/home/index';
+
+getData();
 </script>
 
 <style scoped></style>

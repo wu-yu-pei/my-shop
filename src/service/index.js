@@ -43,25 +43,23 @@ class Request {
   }
 }
 
-const config = {
-  baseURL: 'https://some-domain.com/api/',
-  timeout: 1000,
+const BaseConfig = {
+  baseURL: import.meta.env.VITE_BUSE_URL,
+  timeout: 10000,
   interceptors: {
     // 请求拦截器
-    interceptorsRequest() {},
+    interceptorsRequest(config) {
+      return config;
+    },
     interceptorsRequestCatch() {},
     // 响应拦截器
-    interceptorsResponse() {},
+    interceptorsResponse(res) {
+      return res;
+    },
     interceptorsResponseCatch() {},
   },
 };
 
-const request = new Request(config);
+const request = new Request(BaseConfig);
 
-request.get({
-  url: '/login',
-  interceptors: {
-    interceptorsRequest(config) {},
-    interceptorsResponse(res) {},
-  },
-});
+export default request;

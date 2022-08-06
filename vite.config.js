@@ -9,4 +9,18 @@ import Unocss from 'unocss/vite';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue(), Pages(), Unocss(), Layouts()],
+  server: {
+    port: 5173,
+    open: true,
+    http: true,
+    ssr: false,
+    // 设置代理
+    proxy: {
+      '/api': {
+        target: 'https://wuyupei.top:8888',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+    },
+  },
 });
