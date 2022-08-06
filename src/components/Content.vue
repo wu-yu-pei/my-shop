@@ -1,29 +1,21 @@
 <template>
-  <div class="content" md:w80vw mxa px10 my20>
-    <div grid gap30 justify-between>
-      <div w210 h160 md-w220 md-h200 border>A</div>
-      <div w210 h160 md-w220 md-h200 border>A</div>
-      <div w210 h160 md-w220 md-h200 border>A</div>
-      <div w210 h160 md-w220 md-h200 border>A</div>
-      <div w210 h160 md-w220 md-h200 border>A</div>
-      <div w210 h160 md-w220 md-h200 border>A</div>
-      <div w210 h160 md-w220 md-h200 border>A</div>
-      <div w210 h160 md-w220 md-h200 border>A</div>
-      <div w210 h160 md-w220 md-h200 border>A</div>
-      <div w210 h160 md-w220 md-h200 border>A</div>
-      <div w210 h160 md-w220 md-h200 border>A</div>
-      <div w210 h160 md-w220 md-h200 border>A</div>
-      <div w210 h160 md-w220 md-h200 border>A</div>
-      <div w210 h160 md-w220 md-h200 border>A</div>
-      <div w210 h160 md-w220 md-h200 border>A</div>
-      <div w210 h160 md-w220 md-h200 border>A</div>
-      <div w210 h160 md-w220 md-h200 border>A</div>
-      <div w210 h160 md-w220 md-h200 border>A</div>
+  <div class="content" md:w80vw mxa px10 my20 cursor-pointer>
+    <div grid gap15 justify-between>
+      <ShopItem></ShopItem>
+      <ShopItem></ShopItem>
+      <ShopItem></ShopItem>
+      <ShopItem></ShopItem>
+      <ShopItem></ShopItem>
+      <ShopItem></ShopItem>
+      <ShopItem></ShopItem>
+      <ShopItem></ShopItem>
     </div>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import ShopItem from './ShopItem.vue';
+</script>
 
 <style scoped>
 .content > div {

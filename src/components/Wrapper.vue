@@ -9,6 +9,7 @@
   background-image: url(https://youkewang.top/wp-content/uploads/2021/08/20094302789.jpg);
   background-size: cover;
   background-position: center center;
+  margin-top: 70px;
 }
 .wrapper::after {
   content: '';
@@ -18,6 +19,6 @@
   left: 0;
   right: 0;
   background: rgba(0, 0, 0, 0.5);
-  z-index: 9;
+  z-index: 1;
 }
 </style>

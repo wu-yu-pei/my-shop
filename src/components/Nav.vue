@@ -1,5 +1,5 @@
 <template>
-  <div shadow>
+  <div shadow w100vw fixed left-0 top-0 z-2 bg-white>
     <div class="nav" relative md:w80vw ma flex justify-between p10 h70 box-border>
       <div flex items-center w200 lh-48 shrink-0 overflow-hidden cursor-pointer>
         <img w100 h28 sm:w200 sm:h48 src="../assets/imgs/logo.png" alt="" />
@@ -20,7 +20,8 @@
           @click.stop="searchIconClick"
         ></div>
         <div w50>
-          <img w40 h40 rd-40 cursor-pointer mx-auto my-0 block src="../assets/imgs/user.png" alt="" />
+          <div cursor-pointer @click="showLoginPanel">登录</div>
+          <!-- <img w40 h40 rd-40 cursor-pointer mx-auto my-0 block src="../assets/imgs/user.png" alt="" /> -->
         </div>
       </div>
       <div
@@ -66,18 +67,39 @@
       </div>
     </div>
   </div>
+  <template v-if="isShowLoginPanel">
+    <Login @closeLoginPanel="closeLoginPanel"></Login>
+  </template>
 </template>
 
 <script setup>
 import { onMounted, onUnmounted, ref } from 'vue';
 
+import Login from './Login.vue';
+
 const isShowSearch = ref(false);
 const searchPanel = ref();
 const inputRef = ref();
 const isVip = ref(true);
+const isShowLoginPanel = ref(false);
 
 const searchIconClick = () => {
   isShowSearch.value = !isShowSearch.value;
+};
+
+const showLoginPanel = () => {
+  isShowLoginPanel.value = true;
+  // 阻止滚动效果
+  document.body.style.height = '100vw';
+  document.body.style.overflow = 'hidden';
+};
+
+const closeLoginPanel = () => {
+  isShowLoginPanel.value = false;
+
+  // 还原滚动效果
+  document.body.style.height = '';
+  document.body.style.overflow = '';
 };
 
 // Document Click Event

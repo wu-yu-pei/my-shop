@@ -12,6 +12,8 @@
     "@iconify-json/icon-park-outline": "^1.1.5",
     "@iconify-json/material-symbols": "^1.1.13",
     "@unocss/preset-rem-to-px": "^0.45.1",
+    "@vueuse/core": "^9.1.0",
+    "axios": "^0.27.2",
     "normalize.css": "^8.0.1",
     "pinia": "^2.0.17",
     "unocss": "^0.45.1",
