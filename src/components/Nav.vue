@@ -5,7 +5,7 @@
         <img w100 h28 sm:w200 sm:h48 src="../assets/imgs/logo.png" alt="" />
       </div>
       <div w150 flex justify-between items-center>
-        <div i-icon-park-outline-vip m5 cursor-pointer :class="{ red: isVip }"></div>
+        <div i-icon-park-outline-vip m5 cursor-pointer :class="{ red: homeStore.token }"></div>
         <div
           w20
           h20
@@ -20,8 +20,8 @@
           @click.stop="searchIconClick"
         ></div>
         <div w50>
-          <div cursor-pointer @click="showLoginPanel">登录</div>
-          <!-- <img w40 h40 rd-40 cursor-pointer mx-auto my-0 block src="../assets/imgs/user.png" alt="" /> -->
+          <div v-if="!homeStore.userimg" cursor-pointer @click="showLoginPanel">登录</div>
+          <img v-else w40 h40 rd-40 cursor-pointer mx-auto my-0 block :src="homeStore.userimg" alt="" />
         </div>
       </div>
       <div
@@ -76,17 +76,20 @@
 import { onMounted, onUnmounted, ref } from 'vue';
 
 import Login from './Login.vue';
+import useHomeStore from '../store/home';
 
 const isShowSearch = ref(false);
 const searchPanel = ref();
 const inputRef = ref();
-const isVip = ref(true);
 const isShowLoginPanel = ref(false);
+const homeStore = useHomeStore();
 
+// 搜索图标点击 显示搜索框
 const searchIconClick = () => {
   isShowSearch.value = !isShowSearch.value;
 };
 
+// 显示登录面板
 const showLoginPanel = () => {
   isShowLoginPanel.value = true;
   // 阻止滚动效果
@@ -94,6 +97,7 @@ const showLoginPanel = () => {
   document.body.style.overflow = 'hidden';
 };
 
+// 关闭登录面板
 const closeLoginPanel = () => {
   isShowLoginPanel.value = false;
 

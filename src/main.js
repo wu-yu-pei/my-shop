@@ -2,14 +2,13 @@ import { createApp } from 'vue';
 import App from './App.vue';
 
 // pinia
-import store from './store';
+import pinia from './store';
 
 // unocss
 import 'uno.css';
 
 // normalize.css
-import 'normalize.css'
-
+import 'normalize.css';
 
 // router and layouts
 import generatedRoutes from '~pages';
@@ -22,4 +21,4 @@ const router = createRouter({
   history: createWebHistory(),
 });
 
-createApp(App).use(store).use(router).mount('#app');
+createApp(App).use(pinia).use(router).mount('#app');

@@ -16,14 +16,14 @@ class Request {
   request(config) {
     return new Promise((resolve, reject) => {
       // 请求拦截器
-      if (config.interceptors.interceptorsRequest) {
+      if (config?.interceptors?.interceptorsRequest) {
         config = config.interceptors.interceptorsRequest(config);
       }
       this.instance
         .request(config)
         .then((res) => {
           // 响应拦截器
-          if (config.interceptors.interceptorsResponse) {
+          if (config?.interceptors?.interceptorsResponse) {
             res = config.interceptors.interceptorsRequest(res);
           }
           resolve(res);
@@ -35,11 +35,11 @@ class Request {
   }
 
   get(config) {
-    return this.request({ ...config, methods: 'GET' });
+    return this.request({ ...config, method: 'GET' });
   }
 
   post(config) {
-    return this.request({ ...config, methods: 'POST' });
+    return this.request({ ...config, method: 'POST' });
   }
 }
 
