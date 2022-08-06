@@ -4,7 +4,7 @@
       <div flex items-center w200 lh-48 shrink-0 overflow-hidden cursor-pointer>
         <img w100 h28 sm:w200 sm:h48 src="../assets/imgs/logo.png" alt="" />
       </div>
-      <div w150 flex justify-between items-center>
+      <div w170 flex justify-between items-center>
         <div i-icon-park-outline-vip m5 cursor-pointer :class="{ red: homeStore.token }"></div>
         <div
           w20
@@ -19,9 +19,29 @@
           cursor-pointer
           @click.stop="searchIconClick"
         ></div>
-        <div w50>
-          <div v-if="!homeStore.userimg" cursor-pointer @click="showLoginPanel">登录</div>
-          <img v-else w40 h40 rd-40 cursor-pointer mx-auto my-0 block :src="homeStore.userimg" alt="" />
+        <div w100 relative text-center :class="{ h50: homeStore.token }">
+          <div lh-50 v-if="!homeStore.userimg" hover:c-blue cursor-pointer @click="showLoginPanel">登录</div>
+          <ul
+            v-else
+            absolute
+            z-3
+            m0
+            p5
+            list-none
+            h50
+            transition
+            transition-all
+            hover:h-100
+            hover:shadow
+            bg-white
+            rd-5
+            overflow-hidden
+          >
+            <li h50 lh-50 text-center>
+              <img w40 h40 rd-40 cursor-pointer mx-auto my-0 block :src="homeStore.userimg" alt="" />
+            </li>
+            <li h50 lh-50 cursor-pointer hover:bg-blue rd-5 @click="out">退 出 登 录</li>
+          </ul>
         </div>
       </div>
       <div
@@ -39,6 +59,7 @@
         box-border
         :class="{ show: isShowSearch }"
         ref="searchPanel"
+        z-5
       >
         <input
           grow-4
@@ -127,6 +148,12 @@ const gotoSearch = () => {
   console.log('去搜索');
 };
 
+// 退出登录
+const out = () => {
+  homeStore.token = '';
+  homeStore.userimg = '';
+};
+
 onMounted(() => {
   document.addEventListener('click', handleDocumentClick);
   document.addEventListener('keypress', handleEnterClick);
@@ -146,6 +173,10 @@ onUnmounted(() => {
 
 .red {
   color: red;
+}
+
+.h50 {
+  height: 50px;
 }
 
 .search-input {
