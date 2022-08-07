@@ -6,7 +6,7 @@
       </template>
     </div>
     <div h100 text-center flex justify-center items-center ref="loadingRef">
-      <div v-if="homeStore.currentTotal !== 0" class="loadingio-spinner-double-ring-hjhy7y30biq">
+      <div v-if="homeStore.currentTotal !== 0 && page < 3" class="loadingio-spinner-double-ring-hjhy7y30biq">
         <div class="ldio-2w9n8bafbjw">
           <div></div>
           <div></div>
@@ -14,22 +14,44 @@
           <div><div></div></div>
         </div>
       </div>
-      <div v-else>亲，没有了哦！</div>
+      <div
+        v-else-if="homeStore.currentTotal !== 0 && page == 3"
+        w100
+        h30
+        bg-blue
+        text-center
+        lh-30
+        rd-5
+        c-white
+        hover:opacity-80
+        cursor-pointer
+        @click="loadMore"
+      >
+        <span
+          v-if="isLoading"
+          :class="{ loading: isLoading }"
+          w14
+          h12
+          inline-block
+          i-icon-park-outline-loading-one
+        ></span
+        >加载更多
+      </div>
+      <div v-else>亲，没有了哦</div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, reactive, onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
 import ShopItem from './ShopItem.vue';
 import useHomeStore from '../store/home';
 import { storeToRefs } from 'pinia';
 
 const loadingRef = ref();
 const homeStore = useHomeStore();
+const isLoading = ref(false);
 const { page, id, pid } = storeToRefs(homeStore);
-
-let currentShops = reactive([0]);
 
 onMounted(() => {
   const observer = new IntersectionObserver(
@@ -39,8 +61,9 @@ onMounted(() => {
           page.value = page.value + 1;
           return;
         }
-        currentShops = await homeStore.shopsAction({ page: page.value, id: id.value, pid: pid.value });
+        await homeStore.shopsAction({ page: page.value, id: id.value, pid: pid.value });
         page.value = page.value + 1;
+        if (page.value >= 3) observer.unobserve(loadingRef.value);
       }
     },
     {
@@ -51,6 +74,12 @@ onMounted(() => {
 });
 
 homeStore.shopsAction({ page: page.value, id: id.value, pid: pid.value });
+
+const loadMore = async () => {
+  isLoading.value = true;
+  await homeStore.shopsAction({ page: page.value, id: id.value, pid: pid.value });
+  isLoading.value = false;
+};
 </script>
 
 <style scoped>
@@ -73,6 +102,19 @@ homeStore.shopsAction({ page: page.value, id: id.value, pid: pid.value });
 @media (min-width: 640px) {
   .sm\:w100vw {
     width: 100%;
+  }
+}
+
+.loading {
+  animation: loading 1s linear infinite;
+}
+
+@keyframes loading {
+  from {
+    transform: rotateZ(0);
+  }
+  to {
+    transform: rotateZ(360deg);
   }
 }
 
