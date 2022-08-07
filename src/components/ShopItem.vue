@@ -1,15 +1,34 @@
 <template>
-  <div class="shop-item" w210 h220 md-w220 md-h230 rd-5 shadow p10 box-border>
-    <img src="https://youkewang.top/wp-content/uploads/2022/06/14172703330.png" alt="" />
+  <div class="shop-item" w210 h220 transition md-w220 md-h230 rd-5 shadow p10 box-border hover:translate-y--2>
+    <div w200 h120 overflow-hidden rd-5>
+      <img :src="props.img" alt="" transition scale-120 transform-origin-c hover:scale-130 />
+    </div>
     <div class="category" flex mx0 my15>
       <div i-material-symbols-data-usage mr10 my0 color-blue></div>
-      架构师
+      {{ props.tag }}
     </div>
-    <div class="name" mx0 my15>奈学P8百万大数据架构6期 2022年</div>
+    <div class="name" mx0 my15>{{ props.name }}</div>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { defineProps } from 'vue';
+
+const props = defineProps({
+  img: {
+    type: String || null,
+    required: true,
+  },
+  tag: {
+    type: String,
+    required: true,
+  },
+  name: {
+    type: String,
+    required: true,
+  },
+});
+</script>
 
 <style scoped>
 .shop-item {
@@ -29,5 +48,9 @@
 
 .category {
   font-size: 12px;
+}
+
+.shop-item:hover {
+  box-shadow: 0 0 10px #ccc;
 }
 </style>

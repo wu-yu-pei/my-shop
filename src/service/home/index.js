@@ -18,3 +18,10 @@ export function requestCategory() {
     },
   });
 }
+
+export function requestShops(params) {
+  return request.get({
+    url: '/shops',
+    params,
+  });
+}
