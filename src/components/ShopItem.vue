@@ -1,6 +1,6 @@
 <template>
   <div class="shop-item" w210 h220 transition md-w220 md-h230 rd-5 shadow p10 box-border hover:translate-y--2>
-    <div w200 h120 overflow-hidden rd-5>
+    <div w190 md-w200 h120 overflow-hidden rd-5>
       <img :src="props.img" alt="" transition scale-120 transform-origin-c hover:scale-130 />
     </div>
     <div class="category" flex mx0 my15>
