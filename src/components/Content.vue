@@ -1,5 +1,5 @@
 <template>
-  <div class="content" md:w80vw mxa px10 my20 cursor-pointer>
+  <div class="content" md:w80vw mxa px10 my20>
     <div class="content-item" grid gap30 justify-between>
       <template v-for="item in homeStore.shops">
         <ShopItem :img="item.coverImg" :name="item.name" :tag="item.tag"></ShopItem>
