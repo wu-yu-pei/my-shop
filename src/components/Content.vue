@@ -1,12 +1,12 @@
 <template>
   <div class="content" md:w80vw mxa px10 my20 cursor-pointer>
-    <div grid gap30 justify-between>
+    <div class="content-item" grid gap30 justify-between>
       <template v-for="item in homeStore.shops">
         <ShopItem :img="item.coverImg" :name="item.name" :tag="item.tag"></ShopItem>
       </template>
     </div>
     <div h100 text-center flex justify-center items-center ref="loadingRef">
-      <div class="loadingio-spinner-double-ring-hjhy7y30biq">
+      <div v-if="homeStore.currentTotal !== 0" class="loadingio-spinner-double-ring-hjhy7y30biq">
         <div class="ldio-2w9n8bafbjw">
           <div></div>
           <div></div>
@@ -14,25 +14,32 @@
           <div><div></div></div>
         </div>
       </div>
+      <div v-else>亲，没有了哦！</div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, reactive, onMounted } from 'vue';
 import ShopItem from './ShopItem.vue';
 import useHomeStore from '../store/home';
 import { storeToRefs } from 'pinia';
 
 const loadingRef = ref();
 const homeStore = useHomeStore();
-const { page } = storeToRefs(homeStore);
+const { page, id, pid } = storeToRefs(homeStore);
+
+let currentShops = reactive([0]);
 
 onMounted(() => {
   const observer = new IntersectionObserver(
-    ([{ isIntersecting }]) => {
+    async ([{ isIntersecting }]) => {
       if (isIntersecting) {
-        homeStore.shopsAction({ page: page.value });
+        if (page.value == 1) {
+          page.value = page.value + 1;
+          return;
+        }
+        currentShops = await homeStore.shopsAction({ page: page.value, id: id.value, pid: pid.value });
         page.value = page.value + 1;
       }
     },
@@ -42,9 +49,14 @@ onMounted(() => {
   );
   observer.observe(loadingRef.value);
 });
+
+homeStore.shopsAction({ page: page.value, id: id.value, pid: pid.value });
 </script>
 
 <style scoped>
+.content-item {
+  min-height: 200px;
+}
 .content > div {
   grid-template-columns: repeat(auto-fill, 210px);
 }

@@ -36,19 +36,31 @@ const activeDaGang = ref(0);
 const activeFenLei = ref(0);
 const homeStore = useHomeStore();
 
-const { category } = storeToRefs(homeStore);
+const { category, shops, page, id, pid } = storeToRefs(homeStore);
 
 const handleDaGangClick = (key, item) => {
   activeDaGang.value = key;
   activeFenLei.value = 0;
-  console.log(item);
+
+  shops.value = [];
+  page.value = 1;
+  id.value = item.id;
+  homeStore.shopsAction({ page: page.value, id: id.value, pid: pid.value });
+  page.value += 1;
 };
 
 const handleFenLeiClick = (index, item) => {
   activeFenLei.value = index;
-  console.log(item);
+
+  shops.value = [];
+  page.value = 1;
+  id.value = item.id;
+  pid.value = item.pid;
+  homeStore.shopsAction({ id: id.value, pid: pid.value, page: page.value });
+  page.value += 1;
 };
 
+// 请求分类数据
 homeStore.categoryAction();
 </script>
 

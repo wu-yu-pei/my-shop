@@ -12,6 +12,9 @@ const useHomeStore = defineStore('home', {
       category: '',
       shops: [],
       page: 1,
+      id: 0,
+      pid: 0,
+      currentTotal: 10,
     };
   },
   getters: {},
@@ -34,6 +37,7 @@ const useHomeStore = defineStore('home', {
     async shopsAction(params) {
       const res = await requestShops(params);
       this.shops = this.shops.concat(res.data);
+      this.currentTotal = res.data.length;
     },
   },
   persist: {
