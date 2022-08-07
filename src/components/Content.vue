@@ -54,6 +54,10 @@ homeStore.shopsAction({ page: page.value, id: id.value, pid: pid.value });
 </script>
 
 <style scoped>
+.content {
+  user-select: none;
+}
+
 .content-item {
   min-height: 200px;
 }
