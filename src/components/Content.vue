@@ -15,7 +15,7 @@
         </div>
       </div>
       <div
-        v-else-if="homeStore.currentTotal !== 0 && page == 3"
+        v-else-if="homeStore.currentTotal !== 0 && page >= 3"
         w100
         h30
         bg-blue
@@ -61,9 +61,10 @@ onMounted(() => {
           page.value = page.value + 1;
           return;
         }
+        if (page.value >= 3) return;
         await homeStore.shopsAction({ page: page.value, id: id.value, pid: pid.value });
         page.value = page.value + 1;
-        if (page.value >= 3) observer.unobserve(loadingRef.value);
+        // if (page.value >= 3) observer.unobserve(loadingRef.value);
       }
     },
     {
@@ -77,7 +78,7 @@ homeStore.shopsAction({ page: page.value, id: id.value, pid: pid.value });
 
 const loadMore = async () => {
   isLoading.value = true;
-  await homeStore.shopsAction({ page: page.value, id: id.value, pid: pid.value });
+  await homeStore.shopsAction({ page: page.value++, id: id.value, pid: pid.value });
   isLoading.value = false;
 };
 </script>
