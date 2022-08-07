@@ -5,10 +5,10 @@
       <ul flex gap15 items-center flex-wrap>
         <li
           v-for="(val, key) in category"
-          @click="handleDaGangClick(key)"
+          @click="handleDaGangClick(key, val)"
           :class="{ active: key === activeDaGang }"
         >
-          {{ key }}
+          {{ val.name }}
         </li>
       </ul>
     </div>
@@ -16,11 +16,11 @@
       <span shrink-0><h4>分类</h4></span>
       <ul flex gap15 items-center flex-wrap>
         <li
-          v-for="(item, index) in category[activeDaGang]"
+          v-for="(item, index) in category[activeDaGang]?.children"
           :class="{ active: activeFenLei === index }"
-          @click="handleFenLeiClick(index)"
+          @click="handleFenLeiClick(index, item)"
         >
-          {{ item }}
+          {{ item.name }}
         </li>
       </ul>
     </div>
@@ -28,26 +28,28 @@
 </template>
 
 <script setup>
-import { reactive, ref } from 'vue';
+import { ref } from 'vue';
+import { storeToRefs } from 'pinia';
+import useHomeStore from '../store/home/index';
 
-const activeDaGang = ref('全部');
+const activeDaGang = ref(0);
 const activeFenLei = ref(0);
+const homeStore = useHomeStore();
 
-const category = reactive({
-  全部: ['全部'],
-  前端: ['html', 'css', 'vue', 'react'],
-  后端: ['java', 'Mysql'],
-  架构师: [],
-});
+const { category } = storeToRefs(homeStore);
 
-const handleDaGangClick = (key) => {
+const handleDaGangClick = (key, item) => {
   activeDaGang.value = key;
   activeFenLei.value = 0;
+  console.log(item);
 };
 
-const handleFenLeiClick = (index) => {
+const handleFenLeiClick = (index, item) => {
   activeFenLei.value = index;
+  console.log(item);
 };
+
+homeStore.categoryAction();
 </script>
 
 <style scoped>

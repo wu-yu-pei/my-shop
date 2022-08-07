@@ -45,7 +45,7 @@ class Request {
 
 const BaseConfig = {
   baseURL: import.meta.env.VITE_BUSE_URL,
-  timeout: 10000,
+  timeout: 5000,
   interceptors: {
     // 请求拦截器
     interceptorsRequest(config) {

@@ -46,6 +46,14 @@
           color-white
           @click="goLogin"
         >
+          <span
+            v-if="isShowLoading"
+            :class="{ loading: isShowLoading }"
+            w14
+            h12
+            inline-block
+            i-icon-park-outline-loading-one
+          ></span>
           登 录
         </button>
         <div w300 h50 lh-50>
@@ -63,6 +71,7 @@ import { onClickOutside } from '@vueuse/core';
 import useHomeStore from '../store/home/index';
 
 const loginPanelRef = ref();
+const isShowLoading = ref(false);
 const login = ref(null);
 const emits = defineEmits(['closeLoginPanel']);
 const homeStore = useHomeStore();
@@ -71,13 +80,14 @@ onClickOutside(login, () => emits('closeLoginPanel'));
 
 // login
 const goLogin = async () => {
+  isShowLoading.value = true;
   const res = await homeStore.login();
   if (res.code == 200) {
-    alert('登录成功');
     emits('closeLoginPanel');
   } else {
     alert('登录失败');
   }
+  isShowLoading.value = false;
 };
 </script>
 
@@ -98,5 +108,17 @@ const goLogin = async () => {
 }
 .icon {
   font-size: 20px;
+}
+.loading {
+  animation: loading 1s linear infinite;
+}
+
+@keyframes loading {
+  from {
+    transform: rotateZ(0);
+  }
+  to {
+    transform: rotateZ(360deg);
+  }
 }
 </style>

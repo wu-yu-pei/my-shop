@@ -9,3 +9,12 @@ export function requestLogin(account, password) {
     },
   });
 }
+
+export function requestCategory() {
+  return request.get({
+    url: '/category',
+    params: {
+      a: 10,
+    },
+  });
+}

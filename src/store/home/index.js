@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 import local from '../../utils/index';
-import { requestLogin } from '../../service/home/index';
+import { requestCategory, requestLogin } from '../../service/home/index';
 
 const useHomeStore = defineStore('home', {
   state() {
@@ -9,8 +9,10 @@ const useHomeStore = defineStore('home', {
       password: '111111',
       userimg: local.get('userimg'),
       token: local.get('token'),
+      category: '',
     };
   },
+  getters: {},
   actions: {
     async login() {
       const res = await requestLogin(this.account, this.password);
@@ -20,6 +22,12 @@ const useHomeStore = defineStore('home', {
       this.userimg = res.data.img;
 
       return res.data;
+    },
+
+    async categoryAction() {
+      const res = await requestCategory();
+      this.category = res.data;
+      console.log(this.category);
     },
   },
   persist: {
