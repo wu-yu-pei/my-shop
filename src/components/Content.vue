@@ -57,10 +57,6 @@ onMounted(() => {
   const observer = new IntersectionObserver(
     async ([{ isIntersecting }]) => {
       if (isIntersecting) {
-        if (page.value == 1) {
-          page.value = page.value + 1;
-          return;
-        }
         if (page.value >= 3) return;
         await homeStore.shopsAction({ page: page.value, id: id.value, pid: pid.value });
         page.value = page.value + 1;
@@ -74,7 +70,7 @@ onMounted(() => {
   observer.observe(loadingRef.value);
 });
 
-homeStore.shopsAction({ page: page.value, id: id.value, pid: pid.value });
+homeStore.shopsAction({ page: page.value++, id: id.value, pid: pid.value });
 
 const loadMore = async () => {
   isLoading.value = true;
