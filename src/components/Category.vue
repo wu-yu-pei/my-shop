@@ -41,11 +41,17 @@ const { category, shops, page, id, pid } = storeToRefs(homeStore);
 const handleDaGangClick = (key, item) => {
   activeDaGang.value = key;
   activeFenLei.value = 0;
-
   shops.value = [];
   page.value = 1;
-  id.value = item.id;
-  homeStore.shopsAction({ page: page.value, id: id.value, pid: pid.value });
+  if (item.children.length === 0) {
+    id.value = item.id;
+    homeStore.shopsAction({ id: id.value, pid: 0, page: page.value });
+  } else {
+    pid.value = item.children[0].pid;
+    id.value = item.children[0].id;
+    console.log(pid.value, id.value);
+    homeStore.shopsAction({ id: id.value, pid: pid.value, page: page.value });
+  }
   page.value += 1;
 };
 

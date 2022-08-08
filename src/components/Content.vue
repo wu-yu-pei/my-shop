@@ -60,7 +60,6 @@ onMounted(() => {
         if (page.value >= 3) return;
         await homeStore.shopsAction({ page: page.value, id: id.value, pid: pid.value });
         page.value = page.value + 1;
-        // if (page.value >= 3) observer.unobserve(loadingRef.value);
       }
     },
     {
