@@ -12,7 +12,7 @@
       </p>
     </template>
     <template v-for="item in props.info.imgs">
-      <img :src="item" alt="" my20 />
+      <img class="img" :src="item" alt="" my20 />
     </template>
     <template v-if="props.info.mulu">
       <pre>
@@ -83,6 +83,10 @@ pre {
   padding: 10px 20px;
   color: #f8f8d4;
   border: none;
+}
+
+.img {
+  width: 100%;
 }
 .pay {
   border: 1px dashed blue;
