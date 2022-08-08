@@ -27,9 +27,10 @@
 
 <script setup>
 import { defineProps } from 'vue';
-import { useRouter } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 
 const router = useRouter();
+const route = useRoute();
 
 const props = defineProps({
   item: {
@@ -39,7 +40,11 @@ const props = defineProps({
 });
 
 const goDetial = () => {
-  router.push({ path: '/detial', query: { id: props.item.id } });
+  router.push({
+    name: 'detial',
+    query: { id: props.item.id, from: route.fullPath },
+    params: { info: JSON.stringify(props.item) },
+  });
 };
 </script>
 

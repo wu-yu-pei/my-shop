@@ -1,7 +1,14 @@
 <template>
   <div class="detial-page" mt-70>
-    <Location></Location>
-    <item></item>
+    <Location
+      :catBeg="route.query.from"
+      :catOne="detialStore.shopDetial.categoryone"
+      :catTwo="detialStore.shopDetial.categorytwo"
+    ></Location>
+    <item :info="detialStore.shopDetial"></item>
+    <div h150 bg-black opacity-70>
+
+    </div>
   </div>
 </template>
 
@@ -13,6 +20,14 @@ meta:
 <script setup>
 import Location from '../components/detial/Location.vue';
 import Item from '../components/detial/Item.vue';
+
+import useDetialStore from '../store/detial';
+import { useRoute } from 'vue-router';
+
+const detialStore = useDetialStore();
+const route = useRoute();
+
+detialStore.getDetialAction(route.query.id);
 </script>
 
 <style scoped></style>

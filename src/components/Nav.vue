@@ -100,6 +100,7 @@ import { useRouter, useRoute } from 'vue-router';
 
 import Login from './Login.vue';
 import useHomeStore from '../store/home';
+import local from '../utils/index';
 
 const isShowSearch = ref(false);
 const searchPanel = ref();
@@ -169,6 +170,10 @@ const gotoSearch = () => {
 const out = () => {
   homeStore.token = '';
   homeStore.userimg = '';
+  const org = local.get('home');
+  const now = Object.assign(org, { token: '', userimg: '' });
+  local.set('home', now);
+  router.replace('/');
 };
 
 onMounted(() => {

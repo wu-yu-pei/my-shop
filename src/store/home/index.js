@@ -9,7 +9,7 @@ const useHomeStore = defineStore('home', {
       password: '111111',
       userimg: local.get('userimg'),
       token: local.get('token'),
-      category: '',
+      category: local.get('category'),
       shops: [],
       page: 1,
       id: 0,
@@ -43,7 +43,7 @@ const useHomeStore = defineStore('home', {
   persist: {
     key: 'home',
     storage: window.localStorage,
-    paths: ['token', 'userimg'],
+    paths: ['token', 'userimg', 'category'],
   },
 });
 

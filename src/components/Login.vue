@@ -69,12 +69,16 @@ import { ref } from 'vue';
 import { onClickOutside } from '@vueuse/core';
 
 import useHomeStore from '../store/home/index';
+import { useRoute, useRouter } from 'vue-router';
+import local from '../utils/index';
 
 const loginPanelRef = ref();
 const isShowLoading = ref(false);
 const login = ref(null);
 const emits = defineEmits(['closeLoginPanel']);
 const homeStore = useHomeStore();
+const route = useRoute();
+const router = useRouter();
 
 onClickOutside(login, () => emits('closeLoginPanel'));
 
@@ -84,6 +88,12 @@ const goLogin = async () => {
   const res = await homeStore.login();
   if (res.code == 200) {
     emits('closeLoginPanel');
+    if (route.fullPath != '/') {
+      const org = local.get('home');
+      const now = Object.assign(org, { token: res.token, userimg: res.img });
+      local.set('home', now);
+      router.go(0);
+    }
   } else {
     alert('登录失败');
   }

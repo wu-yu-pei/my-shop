@@ -16,16 +16,22 @@ class Request {
   request(config) {
     return new Promise((resolve, reject) => {
       // 请求拦截器
-      if (config?.interceptors?.interceptorsRequest) {
-        config = config.interceptors.interceptorsRequest(config);
+      if (config?.interceptors?.interceptorsRequest && config?.interceptors?.InterceptorsRequestCatch) {
+        this.instance.interceptors.request.use(
+          config.interceptors.interceptorsRequest,
+          config.interceptors.InterceptorsRequestCatch
+        );
+      }
+      // 响应拦截器
+      if (config?.interceptors?.interceptorsResponse && config?.interceptors?.interceptorsResponse) {
+        this.instance.interceptors.response.use(
+          config.interceptors.interceptorsResponse,
+          config.interceptors.InterceptorsResponseCatch
+        );
       }
       this.instance
         .request(config)
         .then((res) => {
-          // 响应拦截器
-          if (config?.interceptors?.interceptorsResponse) {
-            res = config.interceptors.interceptorsRequest(res);
-          }
           resolve(res);
         })
         .catch((err) => {

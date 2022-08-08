@@ -16,7 +16,7 @@
       <span shrink-0><h4>分类</h4></span>
       <ul flex gap15 items-center flex-wrap>
         <li
-          v-for="(item, index) in category[activeDaGang]?.children"
+          v-for="(item, index) in category && category[activeDaGang]?.children"
           :class="{ active: activeFenLei === index }"
           @click="handleFenLeiClick(index, item)"
         >
