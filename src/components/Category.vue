@@ -32,11 +32,9 @@ import { ref } from 'vue';
 import { storeToRefs } from 'pinia';
 import useHomeStore from '../store/home/index';
 
-const activeDaGang = ref(0);
-const activeFenLei = ref(0);
 const homeStore = useHomeStore();
 
-const { category, shops, page, id, pid } = storeToRefs(homeStore);
+const { category, shops, page, id, pid, activeDaGang, activeFenLei } = storeToRefs(homeStore);
 
 const handleDaGangClick = (key, item) => {
   activeDaGang.value = key;

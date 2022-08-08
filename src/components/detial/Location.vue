@@ -1,7 +1,13 @@
 <template>
   <div class="location" md:w80vw mxa py30 box-border cursor-pointer>
     当前位置:
-    {{ props.catBeg == '/' ? '首页' : '搜索' }}
+    <!-- {{ props.catBeg == '/' ? '首页' : '搜索' }} -->
+    <template v-if="props.catBeg == '/'">
+      <a href="/">首页</a>
+    </template>
+    <template v-else>
+      <a href="/search">首页</a>
+    </template>
     <template v-if="props.catOne"> > {{ category.find((item) => item.id == catOne).name }} </template>
     <template v-if="props.catTwo"> >{{ catTwo }} </template>
   </div>
@@ -39,4 +45,9 @@ const catTwo = computed(() => {
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+a {
+  text-decoration: none;
+  color: blue;
+}
+</style>

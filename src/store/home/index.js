@@ -12,9 +12,11 @@ const useHomeStore = defineStore('home', {
       category: local.get('category'),
       shops: [],
       page: 1,
-      id: 0,
-      pid: 0,
+      id: local.get('id'),
+      pid: local.get('pid'),
       currentTotal: 10,
+      activeDaGang: 0,
+      activeFenLei: 0,
     };
   },
   getters: {},
@@ -43,7 +45,7 @@ const useHomeStore = defineStore('home', {
   persist: {
     key: 'home',
     storage: window.localStorage,
-    paths: ['token', 'userimg', 'category'],
+    paths: ['token', 'userimg', 'category', 'id', 'pid'],
   },
 });
 
