@@ -9,8 +9,8 @@
 </template>
 
 <script setup>
-import ShopItem from './ShopItem.vue';
-import useHomeStore from '../store/home';
+import ShopItem from '../ShopItem.vue';
+import useHomeStore from '../../store/home';
 const homeStore = useHomeStore();
 </script>
 

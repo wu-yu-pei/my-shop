@@ -12,8 +12,8 @@
 
 <script setup>
 import Wrapper from '../components/Wrapper.vue';
-import SearchCategory from '../components/SearchCategory.vue';
-import SearchContent from '../components/SearchContent.vue';
+import SearchCategory from '../components/search/SearchCategory.vue';
+import SearchContent from '../components/search/SearchContent.vue';
 </script>
 
 <style scoped>
