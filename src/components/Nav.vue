@@ -40,7 +40,7 @@
             <li h50 lh-50 text-center>
               <img w40 h40 rd-40 cursor-pointer mx-auto my-0 block :src="homeStore.userimg" alt="" />
             </li>
-            <li h50 lh-50 cursor-pointer hover:bg-blue rd-5 @click="out">退 出 登 录</li>
+            <li class="out" h50 lh-50 cursor-pointer hover:bg-blue rd-5 @click="out" font-500>退出登录</li>
           </ul>
         </div>
       </div>
@@ -206,5 +206,12 @@ onUnmounted(() => {
   font-size: 20px;
   letter-spacing: 3px;
   border-bottom: 2px solid #000;
+}
+
+.out {
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 </style>

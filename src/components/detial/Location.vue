@@ -1,15 +1,21 @@
 <template>
-  <div class="location" md:w80vw mxa py30 box-border cursor-pointer>
+  <div class="location" md:w80vw mxa py30 box-border flex items-center>
     当前位置:
     <!-- {{ props.catBeg == '/' ? '首页' : '搜索' }} -->
     <template v-if="props.catBeg == '/'">
-      <a href="/">首页</a>
+      <a href="/" ml-10>首页</a>
     </template>
     <template v-else>
-      <a href="/search">首页</a>
+      <a href="/search" ml-10>首页</a>
     </template>
-    <template v-if="props.catOne"> > {{ category.find((item) => item.id == catOne).name }} </template>
-    <template v-if="props.catTwo"> >{{ catTwo }} </template>
+    <template v-if="props.catOne">
+      <div inline-block i-icon-park-outline-right mx-10></div>
+      {{ category.find((item) => item.id == catOne).name }}
+    </template>
+    <template v-if="props.catTwo">
+      <div inline-block i-icon-park-outline-right mx-10></div>
+      {{ catTwo }}
+    </template>
   </div>
 </template>
 

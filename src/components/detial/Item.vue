@@ -11,8 +11,14 @@
         {{ props.info.desc }}
       </p>
     </template>
-
-    <img :src="props.info.img" alt="" />
+    <template v-for="item in props.info.imgs">
+      <img :src="item" alt="" my20 />
+    </template>
+    <template v-if="props.info.mulu">
+      <pre>
+      <code>{{props.info.mulu}}</code>
+    </pre>
+    </template>
     <h3>对知识的渴望程度决定了前进动力的大小。</h3>
     <h3>别当知识很廉价地摆在你面前，你反而不会珍惜。</h3>
     <h3>时间才不等你。</h3>
@@ -70,7 +76,14 @@ h3 {
   background: #ffffff;
   font-weight: normal;
 }
-
+pre {
+  margin: 20px 0;
+  font: 12px/20px 'courier new';
+  background: #4a4a4a;
+  padding: 10px 20px;
+  color: #f8f8d4;
+  border: none;
+}
 .pay {
   border: 1px dashed blue;
 }
