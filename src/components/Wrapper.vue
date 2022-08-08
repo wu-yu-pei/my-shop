@@ -1,5 +1,7 @@
 <template>
-  <div class="wrapper" h200 md:h370 relative></div>
+  <div class="wrapper" h200 md:h370 relative>
+    <slot name="w-slot"> </slot>
+  </div>
 </template>
 
 <script setup></script>

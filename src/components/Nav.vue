@@ -1,7 +1,7 @@
 <template>
   <div shadow w100vw fixed left-0 top-0 z-2 bg-white>
     <div class="nav" relative md:w80vw ma flex justify-between p10 h70 box-border>
-      <div flex items-center w200 lh-48 shrink-0 overflow-hidden cursor-pointer>
+      <div flex items-center w200 lh-48 shrink-0 overflow-hidden cursor-pointer @click="goHome">
         <img w100 h28 sm:w200 sm:h48 src="../assets/imgs/logo.png" alt="" />
       </div>
       <div w170 flex justify-between items-center>
@@ -71,6 +71,7 @@
           ref="inputRef"
           class="search-input"
           placeholder="输入关键字回车或点击搜索"
+          v-model="searchVal"
         />
         <div
           outline-none
@@ -95,6 +96,7 @@
 
 <script setup>
 import { onMounted, onUnmounted, ref } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
 
 import Login from './Login.vue';
 import useHomeStore from '../store/home';
@@ -102,8 +104,15 @@ import useHomeStore from '../store/home';
 const isShowSearch = ref(false);
 const searchPanel = ref();
 const inputRef = ref();
+const searchVal = ref();
 const isShowLoginPanel = ref(false);
+const router = useRouter();
+const route = useRoute();
 const homeStore = useHomeStore();
+
+const goHome = () => {
+  router.push({ path: '/' });
+};
 
 // 搜索图标点击 显示搜索框
 const searchIconClick = () => {
@@ -140,12 +149,20 @@ const handleDocumentClick = (e) => {
 const handleEnterClick = (e) => {
   if (e.keyCode === 13) {
     console.log('Enter点击了');
+    if (route.fullPath === '/') {
+      router.push({ path: '/search', query: { value: searchVal.value } });
+    }
+    // 发送网络请求
+    console.log('search...', searchVal.value);
   }
 };
 
 // gotoSearch
 const gotoSearch = () => {
-  console.log('去搜索');
+  if (route.fullPath === '/') {
+    router.push({ path: '/search', query: { value: searchVal.value } });
+  }
+  console.log('去搜索', searchVal.value);
 };
 
 // 退出登录
