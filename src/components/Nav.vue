@@ -4,7 +4,7 @@
       <div flex items-center w200 lh-48 shrink-0 overflow-hidden cursor-pointer @click="goHome">
         <img src="../assets/imgs/logo2.svg" alt="" />
       </div>
-      <div w170 flex justify-between items-center>
+      <div w110 flex justify-between items-center>
         <div i-icon-park-outline-vip m5 cursor-pointer :class="{ red: homeStore.token }"></div>
         <div
           w20
