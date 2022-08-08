@@ -2,7 +2,7 @@
   <div shadow w100vw fixed left-0 top-0 z-2 bg-white>
     <div class="nav" relative md:w80vw ma flex justify-between p10 h70 box-border>
       <div flex items-center w200 lh-48 shrink-0 overflow-hidden cursor-pointer @click="goHome">
-        <img src="../assets/imgs/logo.svg" alt="" />
+        <img src="../assets/imgs/logo2.svg" alt="" />
       </div>
       <div w170 flex justify-between items-center>
         <div i-icon-park-outline-vip m5 cursor-pointer :class="{ red: homeStore.token }"></div>
