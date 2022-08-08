@@ -45,12 +45,12 @@ const handleDaGangClick = (key, item) => {
   page.value = 1;
   if (item.children.length === 0) {
     id.value = item.id;
-    homeStore.shopsAction({ id: id.value, pid: 0, page: page.value });
+    pid.value = 0;
+    homeStore.shopsAction({ page: page.value, id: id.value, pid: 0 });
   } else {
     pid.value = item.children[0].pid;
     id.value = item.children[0].id;
-    console.log(pid.value, id.value);
-    homeStore.shopsAction({ id: id.value, pid: pid.value, page: page.value });
+    homeStore.shopsAction({ page: page.value, id: id.value, pid: pid.value });
   }
   page.value += 1;
 };
@@ -62,7 +62,7 @@ const handleFenLeiClick = (index, item) => {
   page.value = 1;
   id.value = item.id;
   pid.value = item.pid;
-  homeStore.shopsAction({ id: id.value, pid: pid.value, page: page.value });
+  homeStore.shopsAction({ page: page.value, id: id.value, pid: pid.value });
   page.value += 1;
 };
 
