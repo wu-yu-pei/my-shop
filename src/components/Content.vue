@@ -6,7 +6,7 @@
       </template>
     </div>
     <div h100 text-center flex justify-center items-center ref="loadingRef">
-      <div v-if="homeStore.currentTotal !== 0 && page < 3" class="loadingio-spinner-double-ring-hjhy7y30biq">
+      <div v-if="homeStore.currentTotal === 10 && page < 3" class="loadingio-spinner-double-ring-hjhy7y30biq">
         <div class="ldio-2w9n8bafbjw">
           <div></div>
           <div></div>
