@@ -30,12 +30,12 @@
         </div>
       </template>
       <template v-else>
-        尊贵的VIP用户:这是 链接
-        <a :href="props.info.link" target="_blank">
-          <span cursor-pointer mx-15 @click="download" bg-blue>点击下载</span>
+        尊贵的VIP用户: 这是 课程链接
+        <a :href="props.info.link" target="_blank" hover:opacity-80>
+          <span cursor-pointer mx-15 @click="download" bg-blue inline-block lh-30>点击下载</span>
         </a>
         这是提取码:{{ props.info.code }}
-        <span cursor-pointer mx-15 @click="copy" bg-blue>点击复制</span>
+        <span cursor-pointer mx-15 @click="copy" bg-blue hover:opacity-80 inline-block lh-30>点击复制</span>
       </template>
     </div>
   </div>
@@ -90,6 +90,9 @@ pre {
 }
 .pay {
   border: 1px dashed blue;
+}
+.pay a {
+  text-decoration: none;
 }
 .pay span {
   padding: 10px;

@@ -1,0 +1,17 @@
+::-webkit-scrollbar {
+  background-color: #fff;
+  width: 6px;
+  overflow: visible;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #304156;
+  border-radius: 0;
+}
+::-webkit-scrollbar-button {
+  background-color: #304156;
+  width:0px;
+  height:0px;
+}
+::-webkit-scrollbar-corner {
+  background-color: black;
+}

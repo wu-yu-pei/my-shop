@@ -6,6 +6,7 @@ import pinia from './store';
 
 // unocss
 import 'uno.css';
+import './assets/css/index.css'
 
 // normalize.css
 import 'normalize.css';
