@@ -57,7 +57,7 @@
           登 录
         </button>
         <div w300 h50 lh-50>
-          <span cursor-pointer color-blue>获取账号？</span>
+          <span cursor-pointer color-blue @click="goServe">获取账号？</span>
         </div>
       </div>
     </div>
@@ -98,6 +98,11 @@ const goLogin = async () => {
     alert('登录失败');
   }
   isShowLoading.value = false;
+};
+
+const goServe = () => {
+  emits('closeLoginPanel');
+  router.push({ name: 'serve' });
 };
 </script>
 

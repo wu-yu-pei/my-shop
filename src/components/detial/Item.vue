@@ -26,7 +26,7 @@
       <template v-if="!props.info.code">
         <div>
           尊敬的用户, 你还不是Vip用户,请联我们系客服给你提供VIP账号,为你提供优质服务---->
-          <span cursor-pointer bg-yellow>联系客服</span>
+          <span cursor-pointer bg-yellow @click="goServe">联系客服</span>
         </div>
       </template>
       <template v-else>
@@ -43,14 +43,21 @@
 
 <script setup>
 import { defineProps } from 'vue';
+import { useRouter } from 'vue-router';
 const props = defineProps({
   info: {
     type: Object,
   },
 });
 
+const router = useRouter();
+
 const copy = () => {
   copyHandle(props.info.code);
+};
+
+const goServe = () => {
+  router.push({ name: 'serve' });
 };
 
 function copyHandle(content) {

@@ -70,7 +70,10 @@ onMounted(() => {
   observer.observe(loadingRef.value);
 });
 
-homeStore.shopsAction({ page: page.value++, id: id.value, pid: pid.value });
+// fix 重复调用
+if (homeStore.page < 3) {
+  homeStore.shopsAction({ page: page.value++, id: id.value, pid: pid.value });
+}
 
 const loadMore = async () => {
   isLoading.value = true;

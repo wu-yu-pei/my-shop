@@ -5,8 +5,8 @@ import { requestCategory, requestLogin, requestShops } from '../../service/home/
 const useHomeStore = defineStore('home', {
   state() {
     return {
-      account: '18338323927',
-      password: '111111',
+      account: '',
+      password: '',
       userimg: local.get('userimg'),
       token: local.get('token'),
       category: local.get('category'),

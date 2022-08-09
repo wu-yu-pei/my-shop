@@ -6,7 +6,7 @@ import pinia from './store';
 
 // unocss
 import 'uno.css';
-import './assets/css/index.css'
+import './assets/css/index.css';
 
 // normalize.css
 import 'normalize.css';
@@ -20,6 +20,13 @@ const routes = setupLayouts(generatedRoutes);
 const router = createRouter({
   routes,
   history: createWebHistory(),
+});
+
+// fix
+router.afterEach((to, from) => {
+  if (to.path !== '/') {
+    document.body.scrollIntoView();
+  }
 });
 
 createApp(App).use(pinia).use(router).mount('#app');

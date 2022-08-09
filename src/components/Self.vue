@@ -4,13 +4,32 @@
       <h2>关于 VIP</h2>
       <div my-30 bg-white c-black pb-20 font-16 transition hover:translate-y--10 rd-5 overflow-hidden>
         <div class="title" bg-blue c-white p30>终身VIP</div>
-        <div class="rmb" my20><span font-800>99</span> RMB</div>
+        <div class="rmb" my20>
+          <del mr-10><span>199</span></del
+          ><span font-800>69</span> RMB
+        </div>
         <div my-20>
           <div px-40 my-15>新资源免费下载</div>
           <div px-40 my-15>享受全站资源免费下载</div>
           <div px-40 my-15>赠送1个月科学上网服务,高速访问Github/Google/Youtube</div>
         </div>
-        <div w100 h25 mx-a my-10 bg-blue rd-10 lh-25 text-center c-white px20 py10 cursor-pointer>成为会员</div>
+        <div
+          w100
+          h25
+          mx-a
+          my-10
+          bg-blue
+          rd-10
+          lh-25
+          text-center
+          c-white
+          px20
+          py10
+          cursor-pointer
+          @click="goServe"
+        >
+          成为会员
+        </div>
       </div>
     </div>
     <div class="advantage">
@@ -57,7 +76,14 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { useRouter } from 'vue-router';
+const router = useRouter();
+
+const goServe = () => {
+  router.push({ name: 'serve' });
+};
+</script>
 
 <style scoped>
 .self {
@@ -66,8 +92,15 @@
   background-size: cover;
 }
 
-.rmb span {
+.rmb del {
+  color: red;
+}
+.rmb del span {
+  color: red;
   font-size: 30px;
+}
+.rmb span {
+  font-size: 50px;
 }
 
 .title {
