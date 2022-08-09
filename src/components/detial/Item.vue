@@ -12,10 +12,10 @@
       </p>
     </template>
     <template v-for="item in props.info.imgs">
-      <img class="img" :src="item" alt="" my20 />
+      <img class="img" :src="item" alt="" my20 rd-10 />
     </template>
     <template v-if="props.info.mulu">
-      <pre>
+      <pre rd-10>
       <code>{{props.info.mulu}}</code>
     </pre>
     </template>
@@ -30,11 +30,11 @@
         </div>
       </template>
       <template v-else>
-        尊贵的VIP用户: 这是 课程链接
+        尊贵的VIP用户: 你好,课程链接 {{ props.info.link }}
         <a :href="props.info.link" target="_blank" hover:opacity-80>
           <span cursor-pointer mx-15 @click="download" bg-blue inline-block lh-30>点击下载</span>
         </a>
-        这是提取码:{{ props.info.code }}
+        提取码:{{ props.info.code }}
         <span cursor-pointer mx-15 @click="copy" bg-blue hover:opacity-80 inline-block lh-30>点击复制</span>
       </template>
     </div>

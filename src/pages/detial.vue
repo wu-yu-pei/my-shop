@@ -6,7 +6,7 @@
       :catTwo="detialStore.shopDetial.categorytwo"
     ></Location>
     <item :info="detialStore.shopDetial"></item>
-    <div h150 bg-black opacity-70></div>
+    <div class="fotter" h150></div>
   </div>
 </template>
 
@@ -29,4 +29,8 @@ console.log(detialStore);
 detialStore.getDetialAction(route.query.id, router);
 </script>
 
-<style scoped></style>
+<style scoped>
+.fotter {
+  background-color: #1c1f2b;
+}
+</style>
