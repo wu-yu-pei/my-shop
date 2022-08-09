@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper" h200 md:h370 relative>
+  <div class="wrapper" h200 md:h370 relative md:mt-70 mt-50>
     <slot name="w-slot"> </slot>
   </div>
 </template>
@@ -11,7 +11,6 @@
   background-image: url(https://youkewang.top/wp-content/uploads/2021/08/20094302789.jpg);
   background-size: cover;
   background-position: center center;
-  margin-top: 70px;
 }
 .wrapper::after {
   content: '';
