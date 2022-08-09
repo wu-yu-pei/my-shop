@@ -1,7 +1,7 @@
 <template>
-  <div class="serve" mt-70 w80vw ma p20>
-    <Location catBeg="/"></Location>
-    <div class="serve-content" flex justify-center items-center flex-wrap my40 h500>
+  <div class="serve" w80vw ma p20>
+    <div class="serve-content" flex justify-center items-center flex-wrap my-50 md:my70 h500>
+      <Location catBeg="/"></Location>
       <h2 v-if="!homeStroe.token">你好,请联系本站提供的专属客服为你开通VIP账号</h2>
       <h2 v-else>你好VIP用户,这是你的专属客服</h2>
       <img w200 h200 src="../assets/imgs/WX.jpg" alt="" />
