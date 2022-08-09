@@ -45,7 +45,7 @@ const useHomeStore = defineStore('home', {
   persist: {
     key: 'home',
     storage: window.localStorage,
-    paths: ['token', 'userimg', 'category', 'id', 'pid'],
+    paths: ['token', 'userimg', 'category', 'id', 'pid', 'activeFenLei', 'activeDaGang'],
   },
 });
 
