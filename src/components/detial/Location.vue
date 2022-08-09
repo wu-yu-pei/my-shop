@@ -10,13 +10,13 @@
     </template>
     <template v-if="props.catOne">
       <div inline-block i-icon-park-outline-right mx-10></div>
-      <span>{{ category.find((item) => item.id == catOne).name }}</span>
+      <span>{{ category && category.find((item) => item.id == catOne).name }}</span>
     </template>
     <template v-if="props.catTwo">
       <div inline-block i-icon-park-outline-right mx-10></div>
       <span>{{ catTwo }}</span>
     </template>
-    <template v-else>
+    <template v-if="props.kefu">
       <div inline-block i-icon-park-outline-right mx-10></div>
       <span>客服</span>
     </template>
@@ -38,6 +38,9 @@ const props = defineProps({
     type: String,
   },
   catTwo: {
+    type: String,
+  },
+  kefu: {
     type: String,
   },
 });

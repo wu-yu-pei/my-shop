@@ -44,6 +44,9 @@
 <script setup>
 import { defineProps } from 'vue';
 import { useRouter } from 'vue-router';
+
+import Message from '../Message';
+
 const props = defineProps({
   info: {
     type: Object,
@@ -54,6 +57,7 @@ const router = useRouter();
 
 const copy = () => {
   copyHandle(props.info.code);
+  new Message({ message: '复制成功' });
 };
 
 const goServe = () => {
@@ -90,6 +94,8 @@ pre {
   padding: 10px 20px;
   color: #f8f8d4;
   border: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .img {

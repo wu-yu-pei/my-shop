@@ -15,7 +15,7 @@
     <div p10 my10 rd-5 flex>
       <span shrink-0><h4>分类</h4></span>
       <ul flex gap15 items-center flex-wrap>
-        <template v-if="category[activeDaGang]?.children.length === 0">
+        <template v-if="category && category[activeDaGang]?.children.length === 0">
           <li class="active">全部</li>
         </template>
         <li

@@ -6,9 +6,7 @@
       :catTwo="detialStore.shopDetial.categorytwo"
     ></Location>
     <item :info="detialStore.shopDetial"></item>
-    <div h150 bg-black opacity-70>
-
-    </div>
+    <div h150 bg-black opacity-70></div>
   </div>
 </template>
 
@@ -22,12 +20,13 @@ import Location from '../components/detial/Location.vue';
 import Item from '../components/detial/Item.vue';
 
 import useDetialStore from '../store/detial';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 
 const detialStore = useDetialStore();
 const route = useRoute();
+const router = useRouter();
 
-detialStore.getDetialAction(route.query.id);
+detialStore.getDetialAction(route.query.id, router);
 </script>
 
 <style scoped></style>

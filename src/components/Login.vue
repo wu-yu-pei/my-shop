@@ -14,7 +14,7 @@
       bg-white
       rd-5
     >
-      <div border-b border-color-blue><img w200 h48 scal3-300 src="../assets/imgs/logo.svg" alt="" /></div>
+      <div border-b border-color-blue><img w200 h48 scale-300 src="../assets/imgs/logo.svg" alt="" /></div>
       <div flex flex-wrap justify-center>
         <div my-10 w300 h35 relative>
           <div i-material-symbols-person-3-outline class="icon" c-blue absolute top-8 left-10></div>
@@ -72,6 +72,8 @@ import useHomeStore from '../store/home/index';
 import { useRoute, useRouter } from 'vue-router';
 import local from '../utils/index';
 
+import Message from './Message';
+
 const loginPanelRef = ref();
 const isShowLoading = ref(false);
 const login = ref(null);
@@ -84,9 +86,14 @@ onClickOutside(login, () => emits('closeLoginPanel'));
 
 // login
 const goLogin = async () => {
+  if (homeStore.password.trim() === '' || homeStore.account.trim == '') {
+    new Message({ message: '请输入VIP账号及密码' });
+    return;
+  }
   isShowLoading.value = true;
   const res = await homeStore.login();
   if (res.code == 200) {
+    new Message({ message: '登录成功' });
     emits('closeLoginPanel');
     if (route.fullPath != '/') {
       const org = local.get('home');
@@ -94,8 +101,10 @@ const goLogin = async () => {
       local.set('home', now);
       router.go(0);
     }
+  } else if (res.code == 210) {
+    new Message({ message: '账号或密码错误' });
   } else {
-    alert('登录失败');
+    new Message({ message: '网络错误' });
   }
   isShowLoading.value = false;
 };

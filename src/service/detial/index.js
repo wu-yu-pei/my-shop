@@ -5,7 +5,7 @@ export function requestDetial(id) {
   return request.get({
     interceptors: {
       interceptorsRequest(config) {
-        const token = local.get('home').token;
+        const token = local.get('home')?.token;
         if (token) {
           config.headers.Authorization = `Bearer ${token}`;
         }
