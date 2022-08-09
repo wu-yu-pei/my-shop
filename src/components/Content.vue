@@ -1,22 +1,25 @@
 <template>
   <div class="content" md:w80vw mxa px10 my20>
+    <template v-if="homeStore.shops.length == 0">
+      <div flex items-center justify-center flex-shrink-0 mt-100 class="is-loading">
+        <div class="loadingio-spinner-double-ring-hjhy7y30biq">
+          <div class="ldio-2w9n8bafbjw">
+            <div></div>
+            <div></div>
+            <div><div></div></div>
+            <div><div></div></div>
+          </div>
+        </div>
+      </div>
+    </template>
     <div class="content-item" grid gap30 justify-around>
       <template v-for="item in homeStore.shops">
-        <!-- <ShopItem :img="item.coverImg" :name="item.name" :tag="item.tag"></ShopItem> -->
         <ShopItem :item="item"></ShopItem>
       </template>
     </div>
-    <div h100 text-center flex justify-center items-center ref="loadingRef">
-      <div v-if="homeStore.currentTotal === 10 && page < 3" class="loadingio-spinner-double-ring-hjhy7y30biq">
-        <div class="ldio-2w9n8bafbjw">
-          <div></div>
-          <div></div>
-          <div><div></div></div>
-          <div><div></div></div>
-        </div>
-      </div>
+    <div h100 text-center flex justify-center items-center>
       <div
-        v-else-if="homeStore.currentTotal !== 0 && page >= 3"
+        v-if="homeStore.currentTotal !== 0"
         w100
         h30
         bg-blue
@@ -49,29 +52,12 @@ import ShopItem from './ShopItem.vue';
 import useHomeStore from '../store/home';
 import { storeToRefs } from 'pinia';
 
-const loadingRef = ref();
 const homeStore = useHomeStore();
 const isLoading = ref(false);
 const { page, id, pid } = storeToRefs(homeStore);
 
-onMounted(() => {
-  const observer = new IntersectionObserver(
-    async ([{ isIntersecting }]) => {
-      if (isIntersecting) {
-        if (page.value >= 3) return;
-        await homeStore.shopsAction({ page: page.value, id: id.value, pid: pid.value });
-        page.value = page.value + 1;
-      }
-    },
-    {
-      threshold: 0.4,
-    }
-  );
-  observer.observe(loadingRef.value);
-});
-
 // fix 重复调用
-if (homeStore.page < 3) {
+if (homeStore.page == 1) {
   homeStore.shopsAction({ page: page.value++, id: id.value, pid: pid.value });
 }
 

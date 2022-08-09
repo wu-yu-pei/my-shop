@@ -14,7 +14,7 @@
       bg-white
       rd-5
     >
-      <div border-b border-color-blue><img w200 h48 src="../assets/imgs/logo.png" alt="" /></div>
+      <div border-b border-color-blue><img w200 h48 scal3-300 src="../assets/imgs/logo.svg" alt="" /></div>
       <div flex flex-wrap justify-center>
         <div my-10 w300 h35 relative>
           <div i-material-symbols-person-3-outline class="icon" c-blue absolute top-8 left-10></div>
