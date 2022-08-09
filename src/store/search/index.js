@@ -10,10 +10,8 @@ const useDetialStore = defineStore('search', {
   getters: {},
   actions: {
     async getSearchAction(keyword) {
-      console.log(keyword);
       const res = await requestSearch(keyword);
       this.searchShops = res.data.data;
-      console.log(res);
     },
   },
 });

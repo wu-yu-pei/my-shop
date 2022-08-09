@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper" h200 md:h370 relative md:mt-70 mt-50>
+  <div class="wrapper" h200 md:h370 relative>
     <slot name="w-slot"> </slot>
   </div>
 </template>
