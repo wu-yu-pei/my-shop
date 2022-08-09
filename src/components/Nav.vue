@@ -42,7 +42,20 @@
             <li h40 lh-40 md:h50 md:lh-50 text-center>
               <img w40 h40 rd-40 cursor-pointer mx-auto my-0 block :src="homeStore.userimg" alt="" />
             </li>
-            <li class="out" h40 lh-40 mt5 md:mt-0 md:h50 md:lh-50 cursor-pointer hover:bg-blue rd-5 @click="out" font-500>
+            <li
+              class="out"
+              h40
+              lh-40
+              mt5
+              md:mt-0
+              md:h50
+              md:lh-50
+              cursor-pointer
+              hover:bg-blue
+              rd-5
+              @click="out"
+              font-500
+            >
               退出登录
             </li>
           </ul>
@@ -104,16 +117,19 @@ import { useRouter, useRoute } from 'vue-router';
 
 import Login from './Login.vue';
 import useHomeStore from '../store/home';
+import useSearchStore from '../store/search';
 import local from '../utils/index';
+import Message from './Message';
 
 const isShowSearch = ref(false);
 const searchPanel = ref();
 const inputRef = ref();
-const searchVal = ref();
+const searchVal = ref('');
 const isShowLoginPanel = ref(false);
 const router = useRouter();
 const route = useRoute();
 const homeStore = useHomeStore();
+const searchStore = useSearchStore();
 
 const goHome = () => {
   router.push({ path: '/' });
@@ -152,22 +168,30 @@ const handleDocumentClick = (e) => {
 
 // Enter Event
 const handleEnterClick = (e) => {
-  if (e.keyCode === 13) {
-    console.log('Enter点击了');
-    if (route.fullPath === '/') {
-      router.push({ path: '/search', query: { value: searchVal.value } });
+  if (e.keyCode === 13 && isShowSearch.value && searchVal.value.trim() != '') {
+    if (route.path !== '/search') {
+      router.push({ path: '/search' });
     }
     // 发送网络请求
-    console.log('search...', searchVal.value);
+    searchStore.getSearchAction(searchVal.value);
+    searchVal.value = '';
+    isShowSearch.value = false;
   }
 };
 
 // gotoSearch
 const gotoSearch = () => {
-  if (route.fullPath === '/') {
-    router.push({ path: '/search', query: { value: searchVal.value } });
+  if (searchVal.value.trim() == '') {
+    new Message({ message: '请输入搜索内容' });
+    return;
   }
-  console.log('去搜索', searchVal.value);
+  if (route.path !== '/search') {
+    router.push({ path: '/search' });
+  }
+  // 发送网络请求
+  searchStore.getSearchAction(searchVal.value);
+  searchVal.value = '';
+  isShowSearch.value = false;
 };
 
 // 退出登录

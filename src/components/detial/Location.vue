@@ -6,7 +6,7 @@
       <a href="/" ml-10>首页</a>
     </template>
     <template v-else>
-      <a href="/search" ml-10>首页</a>
+      <a href="/search" ml-10>搜索</a>
     </template>
     <template v-if="props.catOne">
       <div inline-block i-icon-park-outline-right mx-10></div>

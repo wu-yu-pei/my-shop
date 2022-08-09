@@ -42,7 +42,7 @@ const props = defineProps({
 const goDetial = () => {
   router.push({
     name: 'detial',
-    query: { id: props.item.id, from: route.fullPath },
+    query: { id: props.item.id, from: route.path },
     params: { info: JSON.stringify(props.item) },
   });
 };

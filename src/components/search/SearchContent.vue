@@ -1,17 +1,26 @@
 <template>
   <div class="content" md:w80vw mxa px10 my20>
-    <div class="content-item" grid gap30 justify-between>
-      <template v-for="item in homeStore.shops">
-        <ShopItem :img="item.coverImg" :name="item.name" :tag="item.tag"></ShopItem>
-      </template>
-    </div>
+    <template v-if="searchStore.searchShops.length == 0">
+      <div h100 lh-100 text-center>暂无搜索内容!</div>
+    </template>
+    <template v-else>
+      <div class="content-item" grid gap30 justify-between>
+        <template v-for="item in searchStore.searchShops">
+          <ShopItem :item="item"></ShopItem>
+        </template>
+      </div>
+    </template>
   </div>
 </template>
 
 <script setup>
 import ShopItem from '../ShopItem.vue';
-import useHomeStore from '../../store/home';
-const homeStore = useHomeStore();
+import useSearchStore from '../../store/search/index';
+
+import { useRoute } from 'vue-router';
+
+const searchStore = useSearchStore();
+const route = useRoute();
 </script>
 
 <style scoped>
