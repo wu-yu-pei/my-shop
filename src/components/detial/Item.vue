@@ -16,7 +16,7 @@
     </template>
     <template v-if="props.info.mulu">
       <pre rd-10>
-      <code>{{props.info.mulu}}</code>
+      <code v-html="props.info.mulu"></code>
     </pre>
     </template>
     <h3>对知识的渴望程度决定了前进动力的大小。</h3>
