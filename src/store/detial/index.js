@@ -11,6 +11,7 @@ const useDetialStore = defineStore('detial', {
   getters: {},
   actions: {
     async getDetialAction(id, router) {
+      this.shopDetial = '';
       const res = await requestDetial(id);
       if (res.data.code == 200) {
         this.shopDetial = res.data.data;
