@@ -18,13 +18,14 @@
       <div flex flex-wrap justify-center>
         <div my-10 w300 h35 relative>
           <div i-material-symbols-person-3-outline class="icon" c-blue absolute top-8 left-10></div>
-          <input type="text" class="input" v-model="homeStore.account" w300 outline-none border-none w200 h35 />
+          <input type="text" class="input" placeholder="请输入VIP账号" v-model="homeStore.account" w300 outline-none border-none w200 h35 />
         </div>
         <div my-10 w300 h35 relative>
           <div i-material-symbols-lock-outline class="icon" c-blue absolute top-8 left-10></div>
           <input
             type="password"
             class="input"
+            placeholder="请输入VIP密码"
             v-model="homeStore.password"
             w300
             outline-none
