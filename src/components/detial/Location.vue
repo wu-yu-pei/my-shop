@@ -1,5 +1,5 @@
 <template>
-  <div class="location" md:w80vw mxa py30 box-border flex items-center>
+  <div class="location" md:w80vw mxa px10 py10 box-border flex items-center>
     当前位置:
     <!-- {{ props.catBeg == '/' ? '首页' : '搜索' }} -->
     <template v-if="props.catBeg == '/'">
