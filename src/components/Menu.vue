@@ -72,7 +72,9 @@ const vipClick = () => {
 };
 
 const topClick = () => {
-  document.body.scrollIntoView();
+  document.body.scrollIntoView({
+    behavior: 'smooth',
+  });
 };
 </script>
 
