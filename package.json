@@ -15,7 +15,7 @@
     "@vueuse/core": "^9.1.0",
     "axios": "^0.27.2",
     "normalize.css": "^8.0.1",
-    "pinia": "^2.0.17",
+    "pinia": "^2.0.18",
     "pinia-plugin-persistedstate": "^2.1.0",
     "unocss": "^0.45.1",
     "vite-plugin-pages": "^0.25.0",
@@ -28,6 +28,7 @@
     "@unocss/preset-icons": "^0.45.4",
     "@unocss/preset-uno": "^0.45.1",
     "@vitejs/plugin-vue": "^3.0.0",
+    "rollup-plugin-external-globals": "^0.6.1",
     "vite": "^3.0.0"
   }
 }
