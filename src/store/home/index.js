@@ -23,7 +23,6 @@ const useHomeStore = defineStore('home', {
   actions: {
     async login() {
       const res = await requestLogin(this.account, this.password);
-      console.log(res);
       // 存token
       this.token = res.data.token;
       this.userimg = res.data.img;
