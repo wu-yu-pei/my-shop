@@ -32,7 +32,7 @@ const props = defineProps({
 });
 
 const goDetial = () => {
-  if (!token) {
+  if (!token.value) {
     new Message({ message: '请先登录' });
     return;
   }
