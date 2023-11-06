@@ -16,7 +16,7 @@ const useDetialStore = defineStore('detial', {
       const res = await requestDetial(id);
       if (res.data.code == 200) {
         this.shopDetial = res.data.data;
-      } else if (res.data.data.code == 401) {
+      } else if (res.data.code == 401) {
         const homeStore = useHomeStore();
         homeStore.userimg = '';
         homeStore.token = '';
