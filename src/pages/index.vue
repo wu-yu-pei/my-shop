@@ -23,7 +23,6 @@ import Wrapper from '../components/Wrapper.vue';
 import Category from '../components/Category.vue';
 import Content from '../components/Content.vue';
 import Message from '../components/Message';
-new Message({ message: '个人练习项目,数据均为模拟数据,请勿相信！' });
 </script>
 
 <style scoped>
